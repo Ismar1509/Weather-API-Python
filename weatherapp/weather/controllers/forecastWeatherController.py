@@ -5,7 +5,7 @@ from weatherapp.serializers import ForecastWeatherRequestSerializer
 from rest_framework.response import Response
 import requests
 
-API_KEY = '915b407319f462c2ec5f309b6d4df5f2'
+API_KEY = ''
 
 def get_forecast_weather(location):
     api_url = f'https://api.openweathermap.org/data/2.5/forecast?q={location}&appid={API_KEY}&units=metric'
