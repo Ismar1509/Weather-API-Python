@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.http import HttpRequest, JsonResponse
 import requests
 
-API_KEY = '915b407319f462c2ec5f309b6d4df5f2'
+API_KEY = ''
 
 def weather_history(request, location):
     # Set up OpenWeatherMap API parameters

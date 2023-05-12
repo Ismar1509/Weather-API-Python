@@ -5,7 +5,7 @@ from rest_framework.response import Response
 from weatherapp.serializers import CurrentWeatherRequestSerializer
 import requests
 
-API_KEY = '915b407319f462c2ec5f309b6d4df5f2'
+API_KEY = ''
 
 
 def get_current_weather(location):
