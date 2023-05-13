@@ -1,38 +1,46 @@
 from django.shortcuts import render
-from rest_framework.decorators import api_view
 from django.http import HttpRequest, JsonResponse
-from weatherapp.serializers import ForecastWeatherRequestSerializer
+from rest_framework.decorators import api_view
 from rest_framework.response import Response
-import requests
+from weatherapp.serializers import ForecastWeatherRequestSerializer
+from .weatherApi import get_weather_forecast_response
+from .errors import bad_request_error
+import requests, json
+
 
 API_KEY = ''
 
-def get_forecast_weather(location):
-    api_url = f'https://api.openweathermap.org/data/2.5/forecast?q={location}&appid={API_KEY}&units=metric'
-    response = requests.get(api_url)
-    if response.status_code == 200:
-        return response.json()
-    else:
-        error_message = f'Error {response.status_code}: {response.json()["message"]}'
-        raise Exception(error_message)
+
+
+def index(request):
+    return render(request, './templates/index.html')
 
 @api_view(['GET', 'POST'])
 def weather_forecast(request):
     if request.method == 'GET':
         location = request.GET.get('location', '')
+        days = request.GET.get('days', '')
         if not location:
-            return JsonResponse({'error': 'Location is required'}, status=400)
-        weather_data = get_forecast_weather(location)
-        return JsonResponse(weather_data, safe=False)
+            return bad_request_error('Location is required')
+        if not days:
+            return bad_request_error('Days are required')
+        if not days.isdigit():
+            return bad_request_error('Days must be a positive integer')
+        days = int(days)
+        if days < 1 or days > 7:
+            return bad_request_error('Days must be between 1 and 7')
+        weather_data = get_weather_forecast_response(location, days, API_KEY)
+        return Response(weather_data)
     
     elif request.method == 'POST':
         serializer = ForecastWeatherRequestSerializer(data=request.data)
         if serializer.is_valid():
             location = serializer.validated_data['location']
+            days = serializer.validated_data['days']
             # Get weather data for the location
-            weather_data = get_forecast_weather(location)
-            # Return the weather data as a JSON response
+            weather_data = get_weather_forecast_response(location, days, API_KEY)
             return Response(weather_data)
         else:
             # Return a bad request response if the serializer is not valid
             return Response(serializer.errors, status=400)
+

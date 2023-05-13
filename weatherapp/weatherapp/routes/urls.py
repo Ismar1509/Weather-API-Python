@@ -25,7 +25,7 @@ urlpatterns = [
     path('weather/current/', currentWeatherController.current_weather, name='current_weather'),
     path('weather/current/<str:path>', handleUnknownRoute.handle_unknown_route),
 
-    path('weather/forecast/', forecastWeatherController.weather_forecast, name='current_weather'),
+    path('weather/forecast/', forecastWeatherController.weather_forecast, name='weather_forecast'),
     path('weather/forecast/<str:path>', handleUnknownRoute.handle_unknown_route),
 
     path('weather/history/', historyWeatherController.weather_history, name='weather_history'),
