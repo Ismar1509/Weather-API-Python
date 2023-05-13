@@ -18,6 +18,7 @@ from django.contrib import admin
 from django.urls import path, include
 from weather.controllers import handleOnlyWeather, handleNoEntry, currentWeatherController, historyWeatherController, forecastWeatherController, handleUnknownRoute
 
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api-auth/', include('rest_framework.urls')),
@@ -28,7 +29,7 @@ urlpatterns = [
     path('weather/forecast/', forecastWeatherController.weather_forecast, name='weather_forecast'),
     path('weather/forecast/<str:path>', handleUnknownRoute.handle_unknown_route),
 
-    path('weather/history/', historyWeatherController.weather_history, name='weather_history'),
+    path('weather/history/', historyWeatherController.historical_weather, name='weather_history'),
     path('weather/history/<str:path>', handleUnknownRoute.handle_unknown_route),
     
     path('<str:path>', handleUnknownRoute.handle_unknown_route),

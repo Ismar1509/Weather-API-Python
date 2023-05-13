@@ -4,16 +4,11 @@ from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from weatherapp.serializers import ForecastWeatherRequestSerializer
 from .weatherApi import get_weather_forecast_response
-from .errors import bad_request_error
+from ..middleware.errors import bad_request_error
 import requests, json
+from .API_KEY import API_KEY
 
 
-API_KEY = ''
-
-
-
-def index(request):
-    return render(request, './templates/index.html')
 
 @api_view(['GET', 'POST'])
 def weather_forecast(request):
@@ -25,7 +20,7 @@ def weather_forecast(request):
         if not days:
             return bad_request_error('Days are required')
         if not days.isdigit():
-            return bad_request_error('Days must be a positive integer')
+            return bad_request_error('Days must not be negative number')
         days = int(days)
         if days < 1 or days > 7:
             return bad_request_error('Days must be between 1 and 7')
