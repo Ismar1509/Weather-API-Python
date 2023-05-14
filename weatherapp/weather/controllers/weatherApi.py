@@ -3,8 +3,9 @@ import requests
 from ..middleware.errors import not_found_error, server_error, bad_request_error
 import time, datetime
 
+
 def get_forecast_weather(location, days, API_KEY):
-    api_url = f'https://api.openweathermap.org/data/2.5/forecast?q={location}&appid={API_KEY}&units=metric&cnt={days * 8}'
+    api_url = f'https://api.openweathermap.org/data/2.5/forecast?q={location}&appid={API_KEY}&units=metric&cnt={days*8}'
     response = requests.get(api_url)
     if response.status_code == 200:
         return response.json()
