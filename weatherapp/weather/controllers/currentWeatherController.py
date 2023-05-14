@@ -11,6 +11,9 @@ from .API_KEY import API_KEY
 from drf_yasg.utils import swagger_auto_schema
 from drf_yasg import openapi
 
+
+
+
 @swagger_auto_schema(
     method='get', 
     operation_summary='Get current weather', 
@@ -26,23 +29,28 @@ from drf_yasg import openapi
     ]
 )
 
-@swagger_auto_schema(
-    method='post',
-    operation_summary='Create new weather entry',
-    operation_description='Create a new weather entry for a specific location',
-    request_body=openapi.Schema(
-        type=openapi.TYPE_OBJECT,
-        properties={
-            'location': openapi.Schema(
-                type=openapi.TYPE_STRING,
-                description='The name of the location'
-            ),
-        },
-        required='location'
-    )
-)
+#@swagger_auto_schema(
+#    method='post',
+#    operation_summary='Create new weather entry',
+#    operation_description='Create a new weather entry for a specific location',
+#    request_body=openapi.Schema(
+#        type=openapi.TYPE_OBJECT,
+#        properties={
+#            'location': openapi.Schema(
+#                type=openapi.TYPE_STRING,
+#                description='The name of the location'
+#            ),
+#        },
+#        required='location'
+#    )
+#)
 
-@api_view(['GET', 'POST'])
+
+
+
+#@api_view(['GET', 'POST'])
+#if POST is also needed just uncomment comment above, and comment one below, other comments should also be uncommented
+@api_view(['GET'])
 def current_weather(request):
     if request.method == 'GET':
         location = request.GET.get('location', '')
@@ -57,17 +65,20 @@ def current_weather(request):
         logger.info(f'Weather data retrieved for location={location}, %s', weather_data)
         return Response(weather_data)
     
-    elif request.method == 'POST':
-        serializer = CurrentWeatherRequestSerializer(data=request.data)
-        if serializer.is_valid():
-            location = serializer.validated_data['location']
-            logger.info(f'POST request received with location={location}')
-            logger.info('Request received: %s', request)
+    #elif request.method == 'POST':
+    #    serializer = CurrentWeatherRequestSerializer(data=request.data)
+    #    if serializer.is_valid():
+    #        location = serializer.validated_data['location']
+    #        logger.info(f'POST request received with location={location}')
+    #        logger.info('Request received: %s', request)
             # Get weather data for the location
-            logger.info(f'Weather data retrieved for location={location}')
-            weather_data = get_weather_current_response(location, API_KEY)
-            return Response(weather_data)
-        else:
-            # Return a bad request response if the serializer is not valid
-            logger.error('Invalid POST request received')
-            return Response(serializer.errors, status=400)
+    #        logger.info(f'Weather data retrieved for location={location}')
+    #        weather_data = get_weather_current_response(location, API_KEY)
+    #        return Response(weather_data)
+    #    else:
+    #        # Return a bad request response if the serializer is not valid
+    #        logger.error('Invalid POST request received')
+    #        return Response(serializer.errors, status=400)
+    else:
+        logger.error(f"Invalid request method: {request.method}")
+        return JsonResponse({'error': 'Invalid request method'})

@@ -12,3 +12,5 @@ class HistoryWeatherRequestSerializer(serializers.Serializer):
     start_date = serializers.DateField(required=True, help_text='Starting date in YYYY-MM-DD format')
     end_date = serializers.DateField(required=True, help_text='Ending date in YYYY-MM-DD format')
 
+    
+
