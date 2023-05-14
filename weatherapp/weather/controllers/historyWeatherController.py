@@ -3,13 +3,11 @@ from rest_framework.decorators import api_view
 from django.http import HttpRequest, JsonResponse
 from weatherapp.serializers import HistoryWeatherRequestSerializer
 from rest_framework.response import Response
-
 from django.views.decorators.csrf import csrf_exempt
 from ..middleware.errors import  retrieve_location_error
 import requests
 from datetime import datetime, timedelta
 import json, os
-
 from ..middleware.loggingMechanism import logger
 from .API_KEY import API_KEY
 
@@ -48,6 +46,7 @@ def get_historical_weather_data(lat, lon, start_date, end_date):
         return None
 
 @csrf_exempt
+@api_view(['GET', 'POST'])
 def historical_weather(request):
     if request.method == 'GET':
         location = request.GET.get('location')

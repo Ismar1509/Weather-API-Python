@@ -16,8 +16,26 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from weather.controllers import handleOnlyWeather, handleNoEntry, currentWeatherController, historyWeatherController, forecastWeatherController, handleUnknownRoute
+from weather.controllers import currentWeatherController, historyWeatherController, forecastWeatherController
+from weather.middleware import handleOnlyWeather, handleNoEntry, handleUnknownRoute
 
+from drf_yasg.views import get_schema_view
+from drf_yasg import openapi
+from rest_framework import permissions
+
+
+schema_view = get_schema_view(
+    openapi.Info(
+        title="Weather API",
+        default_version='v1',
+        description="API documentation for Weather API",
+        terms_of_service="https://www.google.com/policies/terms/",
+        contact=openapi.Contact(email="contact@yourproject.local"),
+        license=openapi.License(name="BSD License"),
+    ),
+    public=True,
+    permission_classes=(permissions.AllowAny,),
+)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -33,5 +51,8 @@ urlpatterns = [
     path('weather/history/<str:path>', handleUnknownRoute.handle_unknown_route),
     
     path('<str:path>', handleUnknownRoute.handle_unknown_route),
-    path('weather/', handleOnlyWeather.handle_only_weather)
+    path('weather/', handleOnlyWeather.handle_only_weather),
+
+    path('api/swagger/', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
+    path('api/redoc/', schema_view.with_ui('redoc', cache_timeout=0), name='schema-redoc'),
 ]
