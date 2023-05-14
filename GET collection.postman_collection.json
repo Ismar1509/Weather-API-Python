@@ -1,7 +1,7 @@
 {
 	"info": {
-		"_postman_id": "f9ee8650-9e5d-4d78-bc55-83a46e999325",
-		"name": "New Collection",
+		"_postman_id": "55586ae4-d072-42c6-9732-8c1da1940b09",
+		"name": "GET collection",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "25027137"
 	},
@@ -94,96 +94,6 @@
 							"key": "end_date",
 							"value": "2023-01-03"
 						}
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Current POST",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n    \"location\" : \"Zenica\"\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "http://localhost:8000/weather/current/",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8000",
-					"path": [
-						"weather",
-						"current",
-						""
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Forecast POST",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n    \"location\" : \"Zenica\",\r\n    \"days\" : \"2\"\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "http://localhost:8000/weather/forecast/",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8000",
-					"path": [
-						"weather",
-						"forecast",
-						""
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "History POST",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n    \"location\" : \"Zenica\",\r\n    \"start_date\" : \"2023-05-05\",\r\n    \"end_date\" : \"2023-05-07\"\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "http://localhost:8000/weather/history/",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8000",
-					"path": [
-						"weather",
-						"history",
-						""
 					]
 				}
 			},
