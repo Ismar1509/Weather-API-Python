@@ -1,4 +1,5 @@
 from rest_framework import serializers
+from django.contrib.auth.models import User
 
 class CurrentWeatherRequestSerializer(serializers.Serializer):
     location = serializers.CharField(required=True, max_length=255)
@@ -12,5 +13,10 @@ class HistoryWeatherRequestSerializer(serializers.Serializer):
     start_date = serializers.DateField(required=True, help_text='Starting date in YYYY-MM-DD format')
     end_date = serializers.DateField(required=True, help_text='Ending date in YYYY-MM-DD format')
 
+
+class UserSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = ['id', 'username', 'email']
     
 
