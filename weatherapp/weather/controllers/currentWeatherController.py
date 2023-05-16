@@ -18,7 +18,6 @@ from django.contrib.auth import authenticate
 from django.contrib.auth.models import User
 
 
-
 @swagger_auto_schema(
     method='get', 
     operation_summary='Get current weather', 
@@ -98,7 +97,7 @@ def current_weather(request):
             response = HttpResponse('Unauthorized', status=401)
             response['WWW-Authenticate'] = 'Basic realm="API"'
             return response
-
+        
     # Extract and decode the Authorization header
         auth_header = request.headers['Authorization']
         if not auth_header.startswith('Basic '):
