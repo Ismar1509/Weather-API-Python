@@ -27,7 +27,7 @@ Activate the virtual environment - After creating the virtual environment, you n
 
 Windows
 ```
-  myenv\Scripts\activate
+  myenv\Scripts\activate.bat
 ```
 
 MacOS or Linux
