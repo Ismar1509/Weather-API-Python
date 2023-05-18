@@ -1,19 +1,16 @@
-import base64, requests
+import base64
 from django.shortcuts import render
-from django.http import HttpRequest, HttpResponse, JsonResponse
+from django.http import HttpResponse, JsonResponse
 from rest_framework.decorators import api_view, authentication_classes, permission_classes
 from rest_framework.response import Response
 from weatherapp.serializers import CurrentWeatherRequestSerializer
-from ..middleware.errors import bad_request_error, not_found_error, server_error
+from ..middleware.errors import bad_request_error
 from .weatherApi import get_weather_current_response
 from ..middleware.loggingMechanism import logger
 from .API_KEY import API_KEY
-from drf_yasg.utils import swagger_auto_schema
-from drf_yasg import openapi
 from rest_framework.authentication import BasicAuthentication
 from rest_framework.permissions import IsAuthenticated
 from django.contrib.auth import authenticate
-from django.contrib.auth.models import User
 from ..swagger.currentWeatherSwagger import current_weather_get_swagger, current_weather_post_swagger
 
 @current_weather_get_swagger
