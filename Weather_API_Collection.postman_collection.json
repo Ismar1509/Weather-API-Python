@@ -1,7 +1,7 @@
 {
 	"info": {
-		"_postman_id": "f9ee8650-9e5d-4d78-bc55-83a46e999325",
-		"name": "GET and POST collection",
+		"_postman_id": "0d8129ce-b6d2-4ab4-ad44-88d65c5f00ab",
+		"name": "Weather_API_Collection",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "25027137"
 	},
@@ -10,12 +10,21 @@
 			"name": "Current GET",
 			"request": {
 				"method": "GET",
-				"header": [],
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Basic YWRtaW4xMjM6c29mdGVuZzEyMw==",
+						"type": "text"
+					}
+				],
 				"url": {
-					"raw": "http://localhost:8000/weather/current/?location=Zenica",
+					"raw": "http://127.0.0.1:8000/weather/current/?location=London",
 					"protocol": "http",
 					"host": [
-						"localhost"
+						"127",
+						"0",
+						"0",
+						"1"
 					],
 					"port": "8000",
 					"path": [
@@ -26,7 +35,7 @@
 					"query": [
 						{
 							"key": "location",
-							"value": "Zenica"
+							"value": "London"
 						}
 					]
 				}
@@ -37,12 +46,21 @@
 			"name": "Forecast GET",
 			"request": {
 				"method": "GET",
-				"header": [],
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Basic YWRtaW4xMjM6c29mdGVuZzEyMw==",
+						"type": "text"
+					}
+				],
 				"url": {
-					"raw": "http://localhost:8000/weather/forecast/?location=Zenica&days=1",
+					"raw": "http://127.0.0.1:8000/weather/forecast/?location=London&days=1",
 					"protocol": "http",
 					"host": [
-						"localhost"
+						"127",
+						"0",
+						"0",
+						"1"
 					],
 					"port": "8000",
 					"path": [
@@ -53,7 +71,7 @@
 					"query": [
 						{
 							"key": "location",
-							"value": "Zenica"
+							"value": "London"
 						},
 						{
 							"key": "days",
@@ -68,12 +86,21 @@
 			"name": "History GET",
 			"request": {
 				"method": "GET",
-				"header": [],
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Basic YWRtaW4xMjM6c29mdGVuZzEyMw==",
+						"type": "text"
+					}
+				],
 				"url": {
-					"raw": "http://localhost:8000/weather/history/?location=Zenica&start_date=2023-01-01&end_date=2023-01-03",
+					"raw": "http://127.0.0.1:8000/weather/history/?location=London&start_date=2023-05-10&end_date=2023-05-11",
 					"protocol": "http",
 					"host": [
-						"localhost"
+						"127",
+						"0",
+						"0",
+						"1"
 					],
 					"port": "8000",
 					"path": [
@@ -84,15 +111,15 @@
 					"query": [
 						{
 							"key": "location",
-							"value": "Zenica"
+							"value": "London"
 						},
 						{
 							"key": "start_date",
-							"value": "2023-01-01"
+							"value": "2023-05-10"
 						},
 						{
 							"key": "end_date",
-							"value": "2023-01-03"
+							"value": "2023-05-11"
 						}
 					]
 				}
@@ -103,10 +130,16 @@
 			"name": "Current POST",
 			"request": {
 				"method": "POST",
-				"header": [],
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Basic YWRtaW4xMjM6c29mdGVuZzEyMw==",
+						"type": "text"
+					}
+				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"location\" : \"Zenica\"\r\n}",
+					"raw": "{\r\n    \"location\" : \"London\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -114,10 +147,13 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:8000/weather/current/",
+					"raw": "http://127.0.0.1:8000/weather/current/",
 					"protocol": "http",
 					"host": [
-						"localhost"
+						"127",
+						"0",
+						"0",
+						"1"
 					],
 					"port": "8000",
 					"path": [
@@ -130,13 +166,19 @@
 			"response": []
 		},
 		{
-			"name": "Forecast POST",
+			"name": "History POST",
 			"request": {
 				"method": "POST",
-				"header": [],
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Basic YWRtaW4xMjM6c29mdGVuZzEyMw==",
+						"type": "text"
+					}
+				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"location\" : \"Zenica\",\r\n    \"days\" : \"2\"\r\n}",
+					"raw": "{\r\n    \"location\" : \"London\",\r\n    \"start_date\" : \"2023-05-10\",\r\n    \"end_date\" : \"2023-05-11\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -144,15 +186,18 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:8000/weather/forecast/",
+					"raw": "http://127.0.0.1:8000/weather/history/",
 					"protocol": "http",
 					"host": [
-						"localhost"
+						"127",
+						"0",
+						"0",
+						"1"
 					],
 					"port": "8000",
 					"path": [
 						"weather",
-						"forecast",
+						"history",
 						""
 					]
 				}
@@ -160,13 +205,19 @@
 			"response": []
 		},
 		{
-			"name": "History POST",
+			"name": "Forecast POST",
 			"request": {
 				"method": "POST",
-				"header": [],
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Basic YWRtaW4xMjM6c29mdGVuZzEyMw==",
+						"type": "text"
+					}
+				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"location\" : \"Zenica\",\r\n    \"start_date\" : \"2023-05-05\",\r\n    \"end_date\" : \"2023-05-07\"\r\n}",
+					"raw": "{\r\n    \"location\" : \"London\",\r\n    \"days\" : 1\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -174,15 +225,18 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:8000/weather/history/",
+					"raw": "http://127.0.0.1:8000/weather/forecast/",
 					"protocol": "http",
 					"host": [
-						"localhost"
+						"127",
+						"0",
+						"0",
+						"1"
 					],
 					"port": "8000",
 					"path": [
 						"weather",
-						"history",
+						"forecast",
 						""
 					]
 				}

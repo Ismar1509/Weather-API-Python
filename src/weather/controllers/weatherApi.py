@@ -31,7 +31,7 @@ def get_weather_current_response(location, API_KEY):
         #Convert UTC timezone to location of Sarajevu in Europe and format the time
         last_refresh_time_str = last_refresh_time.astimezone(pytz.timezone('Europe/Sarajevo')).strftime("%Y-%m-%d %H:%M:%S")
 
-        return {'weather_data': weather_data, 'last_refresh_time': last_refresh_time_str}
+        return {'weather_data': weather_data, 'last_refresh_time': last_refresh_time_str, 'provider' : 'OpenWeatherMap'}
     else:
         return {'error': 'Unable to fetch weather data, check the parameters you provided'}
 
@@ -56,7 +56,7 @@ def get_weather_forecast_response(location, days, API_KEY):
         #Convert UTC timezone to location of Sarajevu in Europe and format the time
         last_refresh_time_str = last_refresh_time.astimezone(pytz.timezone('Europe/Sarajevo')).strftime("%Y-%m-%d %H:%M:%S")
 
-        return {'weather_data': weather_data, 'last_refresh_time': last_refresh_time_str}
+        return {'weather_data': weather_data, 'last_refresh_time': last_refresh_time_str, 'provider' : 'OpenWeatherMap'}
     else:
         return {'error': 'Unable to fetch weather data, check the parameters you provided'}    
 
@@ -103,7 +103,7 @@ def get_historical_weather_data(lat, lon, start_date, end_date, API_KEY):
         last_refresh_time = datetime.now(pytz.utc)
         last_refresh_time_str = last_refresh_time.astimezone(pytz.timezone('Europe/Sarajevo')).strftime("%Y-%m-%d %H:%M:%S")
 
-        return {'weather_data': weather_data, 'last_refresh_time': last_refresh_time_str}
+        return {'weather_data': weather_data, 'last_refresh_time': last_refresh_time_str, 'provider' : 'OpenWeatherMap'}
     else:
         return {'error': 'Unable to fetch historical weather data.'}
 

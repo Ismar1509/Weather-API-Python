@@ -62,7 +62,8 @@ This will start the development server, and you can access the project by visiti
 There are three API endpoints - current, forecast and history weather. They differ in their responses but also in data needed to make requests. All of them use location parameter, forecast uses additionally number of days between 1 and 7 for forecasting. Historical data needs beside location, start and end date (**start_date**, **end_date**) in format - **YYYY-MM-DD** 
 
 And all of them are called using **POST** requests which is protected with basic authentication.
-**GET** request is also available but it is not practice to protect this kind of request.
+**GET** request is also available and has same basic authentication.
+Recommended way of testing if Api fetches the data is through swagger that is also included
 
 For Basic authentication, user needs keyword **Basic** and password converted to base64. Explanation of this is found in file config.txt
 
