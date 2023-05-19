@@ -54,7 +54,7 @@ Navigate to this project and use command
 
 Once the virtual environment is activated, you can install the project dependencies specified in project's requirements.txt file. You can use the command above to install the dependencies. It will install all the required packages and libraries for the project.
 
-Place API key into API_KEY.py 
+Place API key into API_KEY.py (this file is in src/weather/controllers/API_KEY.py) 
 **API KEY HAS BEEN PROVIDED TO THE PROFESSOR ON TEAMS ASSIGNMENT**
 
 If your IDE suggests that there are migrations to be done, use the following command:

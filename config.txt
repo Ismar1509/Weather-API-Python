@@ -10,11 +10,22 @@ Each time you want to fetch data using swagger and GET or POST request you will 
 Fill it like this:
 
 Basic <base64username:password>
-e.g. your username is admin123 and password is softeng123
 
+e.g. your username is admin123 and password is softeng123
+Click on the link above and fill it like this - admin123:softeng123 (username:password)
+Response should be  YWRtaW4xMjM6c29mdGVuZzEyMw==
+Use the generated base64 from above and then use it like this in header:
 Basic YWRtaW4xMjM6c29mdGVuZzEyMw==
 
+Main goal is to use the link above to generate your username:password from superuser into base64
+
 By using anything differently through swagger, you will not be able to fetch data
+If you used wrong base64 version, there will be prompt asking for username and password
+Click cancel, reload page, and enter right base64 username and password as shown above
+
+Sometimes when fetching directly through link, without swagger UI, you will be asked to enter username and password in prompt
+This will happen only first time you try to fetch
+Enter username and password in prompt without converting them in base64
 
 Same is for postman, you will need to add authorization as one of the headers and
 Basic YWRtaW4xMjM6c29mdGVuZzEyMw== as value for example
