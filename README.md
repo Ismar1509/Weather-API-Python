@@ -23,6 +23,17 @@ Set up a virtual environment (optional but recommended): It's a good practice to
 ```
 This will create a new virtual environment named myenv.
 
+For Linux, command below is used instead
+
+```
+  python3 -m venv myenv
+```
+If on Linux you cannot create venv, you should install python3-venv
+
+```
+  apt install python3.10-venv
+```
+
 Activate the virtual environment - After creating the virtual environment, you need to activate it. The process varies depending on the operating system:
 
 Windows
@@ -51,12 +62,33 @@ If your IDE suggests that there are migrations to be done, use the following com
 ```
   python manage.py migrate
 ```
-Run the development server: Finally, you can start the development server to run this Django project. You can use the following command:
+Run the development server: Finally, you can start the development server to run this Django project. You can use the following command after navigating to src:
 
 ```
   python manage.py runserver
 ```
 This will start the development server, and you can access the project by visiting http://localhost:8000 in your web browse
+
+Before starting the server, use command 
+
+```
+  python manage.py createsuperuser
+```
+By using this command, you will be asked to enter username, email and password twice.
+This will store your super user in database and it will be used for authentication.
+To fill headers needed for authentication, use online bas64 generators to convert your username and password into bas64
+
+Each time you want to fetch data using swagger and GET or POST request you will need to fill authorization header
+Fill it like this:
+
+Basic <base64username:password>
+e.g. your username is admin123 and password is softeng123
+
+
+```
+  Basic YWRtaW4xMjM6c29mdGVuZzEyMw==
+```
+This is described better in config.txt file
 
 ## Make API Requests
 There are three API endpoints - current, forecast and history weather. They differ in their responses but also in data needed to make requests. All of them use location parameter, forecast uses additionally number of days between 1 and 7 for forecasting. Historical data needs beside location, start and end date (**start_date**, **end_date**) in format - **YYYY-MM-DD** 
