@@ -1,4 +1,4 @@
-from django.http import JsonResponse
+from rest_framework.response import Response
 
-def handle_no_entry(request):
-    return JsonResponse({'error': 'No location entered.'}, status=404)
+def handle_no_entry(message):
+    return Response({'error': {message}})

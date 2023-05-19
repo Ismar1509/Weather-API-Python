@@ -8,6 +8,13 @@ forecast_weather_get_swagger = swagger_auto_schema(
     operation_description='Get forecast weather for a specific location',
     manual_parameters=[
         openapi.Parameter(
+            name='Authorization',
+            in_=openapi.IN_HEADER,
+            type=openapi.TYPE_STRING,
+            description='Authorization header with Basic Authentication',
+            required=True
+        ),
+        openapi.Parameter(
             name='location',
             in_=openapi.IN_QUERY,
             type=openapi.TYPE_STRING,
@@ -48,7 +55,7 @@ forecast_weather_post_swagger = swagger_auto_schema(
             ),
             'days': openapi.Schema(
                 type=openapi.TYPE_INTEGER,
-                description='Number of days for location',
+                description='Number of days for location (between 1 and 7)',
                 example='5'
             )
         },

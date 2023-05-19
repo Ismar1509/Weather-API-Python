@@ -18,9 +18,13 @@ def get_weather_current_response(location, API_KEY):
         #data = response.json()
         data = response.json()
         weather_data = responseBodyCurrent(data)
-        return weather_data
+
+        last_refresh_time = datetime.now(pytz.utc)
+        last_refresh_time_str = last_refresh_time.astimezone(pytz.timezone('Europe/Sarajevo')).strftime("%Y-%m-%d %H:%M:%S")
+
+        return {'weather_data': weather_data, 'last_refresh_time': last_refresh_time_str}
     else:
-        return {'error': 'Unable to fetch weather data.'}
+        return {'error': 'Unable to fetch weather data, check the parameters you provided'}
 
 @cache_memoize(300)  # cache for 5 minutes
 def get_weather_forecast_response(location, days, API_KEY):
@@ -35,7 +39,7 @@ def get_weather_forecast_response(location, days, API_KEY):
 
         return {'weather_data': weather_data, 'last_refresh_time': last_refresh_time_str}
     else:
-        return {'error': 'Unable to fetch forecast weather data.'}    
+        return {'error': 'Unable to fetch weather data, check the parameters you provided'}    
 
 def get_lat_lon(location):
     url = f"https://api.openweathermap.org/geo/1.0/direct?q={location}&limit=1&appid={API_KEY}"

@@ -8,6 +8,13 @@ history_weather_get_swagger = swagger_auto_schema(
     operation_description='Get historical weather data for a specific location for a range of dates',
     manual_parameters=[
         openapi.Parameter(
+            name='Authorization',
+            in_=openapi.IN_HEADER,
+            type=openapi.TYPE_STRING,
+            description='Authorization header with Basic Authentication',
+            required=True
+        ),
+        openapi.Parameter(
             name='location',
             in_=openapi.IN_QUERY,
             type=openapi.TYPE_STRING,

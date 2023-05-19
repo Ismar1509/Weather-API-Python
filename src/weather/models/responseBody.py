@@ -1,7 +1,3 @@
-from datetime import datetime
-import pytz
-
-
 def responseBodyCurrent(data):
     weather_data = {
             'timestamp': data['dt'],
@@ -9,7 +5,6 @@ def responseBodyCurrent(data):
             'humidity': data['main']['humidity'],
             'wind_speed': data['wind']['speed'],
             'description': data['weather'][0]['description'],
-            'last_refresh_datetime': datetime.now(pytz.utc).astimezone(pytz.timezone('Europe/Sarajevo')).strftime("%Y-%m-%d %H:%M:%S")
         }
     return weather_data
 

@@ -1,0 +1,17 @@
+To enter the data, you need to fill authorization header
+
+You will need to create superuser with command py manage.py createsuperuser
+You should enter username, email, and password you want
+
+After that convert your usernam and password into base64 using online Basic Authentication Header Generator
+https://mixedanalytics.com/tools/basic-authentication-generator/
+
+Each time you want to fetch data using swagger and GET or POST request you will need to fill authorization header
+Fill it like this:
+
+Basic <base64username:password>
+e.g. your username is admin123 and password is softeng123
+
+Basic YWRtaW4xMjM6c29mdGVuZzEyMw==
+
+By using anything differently through swagger, you will not be able to fetch data
