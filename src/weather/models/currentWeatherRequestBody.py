@@ -13,6 +13,13 @@ current_weather_get_swagger = swagger_auto_schema(
             description='The name of the location to get the weather for',
             required=True
         ),
+        openapi.Parameter(
+            name='Authorization',
+            in_=openapi.IN_HEADER,
+            type=openapi.TYPE_STRING,
+            description='Authorization header with Basic Authentication',
+            required=True
+        ),
     ]
 )
 
