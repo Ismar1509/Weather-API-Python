@@ -1,7 +1,10 @@
 from drf_yasg import openapi
 from drf_yasg.utils import swagger_auto_schema
 
-# Swagger documentation for Get Forecast Weather endpoint
+#Request bodies for GET and POST for forecast weather with swagger included
+#Define method - get or post, give summary and description of both
+#Includes parameters - Authorization header and location, days
+#Can return different response if some errors occur
 forecast_weather_get_swagger = swagger_auto_schema(
     method='get',
     operation_summary='Get forecast weather',
@@ -31,7 +34,6 @@ forecast_weather_get_swagger = swagger_auto_schema(
     ]
 )
 
-# Swagger documentation for Create Forecast Weather Entry endpoint
 forecast_weather_post_swagger = swagger_auto_schema(
     method='post',
     operation_summary='Create forecast weather entry',

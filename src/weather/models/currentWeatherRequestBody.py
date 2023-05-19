@@ -1,6 +1,10 @@
 from drf_yasg import openapi
 from drf_yasg.utils import swagger_auto_schema
 
+#Request bodies for GET and POST for current weather with swagger included
+#Define method - get or post, give summary and description of both
+#Includes parameters - Authorization header and location
+#Can return different response if some errors occur
 current_weather_get_swagger = swagger_auto_schema(
     method='get',
     operation_summary='Get current weather',

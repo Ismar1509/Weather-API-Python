@@ -1,7 +1,10 @@
 from drf_yasg import openapi
 from drf_yasg.utils import swagger_auto_schema
 
-# Swagger documentation for Get Historical Data for Weather endpoint
+#Request bodies for GET and POST for historical weather with swagger included
+#Define method - get or post, give summary and description of both
+#Includes parameters - Authorization header and location, start and end date
+#Can return different response if some errors occur
 history_weather_get_swagger = swagger_auto_schema(
     method='get',
     operation_summary='Get historical data for weather',
@@ -41,7 +44,6 @@ history_weather_get_swagger = swagger_auto_schema(
     ]
 )
 
-# Swagger documentation for Create Historical Data for Weather Entry endpoint
 history_weather_post_swagger = swagger_auto_schema(
     method='post',
     operation_summary='Create historical data for weather entry',

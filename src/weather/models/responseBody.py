@@ -1,3 +1,6 @@
+#Response bodies for current, forecast and historical data
+#Return list of important parameters - timestamp, temeperature, humidity, wind speed and description
+#Time of last caching appends these responses in another function in views - weatherApi.py
 def responseBodyCurrent(data):
     weather_data = {
             'timestamp': data['dt'],
